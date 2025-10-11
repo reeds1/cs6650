@@ -29,6 +29,12 @@ terraform apply
 4. Build and push Docker image
 cd ../src
 docker buildx build --platform linux/amd64 -t <account_id>.dkr.ecr.<region>.amazonaws.com/<repo>:latest --push .
+(create new task)
+aws ecs update-service \
+  --cluster CS6650L2-cluster \
+  --service CS6650L2 \
+  --force-new-deployment \
+  --region us-west-2
 
 5. Test API
 get products
